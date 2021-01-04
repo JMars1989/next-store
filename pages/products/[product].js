@@ -7,6 +7,7 @@ const Product = ({ product: { data, content } }) => {
             <h1>{data.name}</h1>
             <p>{data.description}</p>
             <p>${data.price / 100}</p>
+            <p>{}</p>
         </div>
     )
 };
