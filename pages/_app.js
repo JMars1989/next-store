@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Normalize } from "styled-normalize";
 
 const Container = styled.div`
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
-
-    background: pink;
-    font-family: 'Padauk', sans-serif;
+    ${'' /* from uiGradients */}
+    background: linear-gradient(to right, #1d4350, #a43931);
+    font-family: 'Lato', sans-serif;
 `
 
 const MyApp = ({ Component, pageProps }) => {
