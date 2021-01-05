@@ -1,13 +1,15 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import marked from "marked";
 
 const Product = ({ product: { data, content } }) => {
+    const html = marked(content)
     return (
         <div>
             <h1>{data.name}</h1>
             <p>{data.description}</p>
             <p>${data.price / 100}</p>
-            <p>{}</p>
+            <div dangerouslySetInnerHTML={{__html: html}} />
         </div>
     )
 };
