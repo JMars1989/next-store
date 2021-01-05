@@ -10,6 +10,11 @@ const Container = styled.div`
     padding: 1rem 2rem;
     min-height: 200px;
     position: relative;
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: scale(1.01);
+    }
 `
 
 const ProductsContainer = styled.div`
@@ -20,8 +25,9 @@ const ProductsContainer = styled.div`
 `
 const Price = styled.div`
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 0.5rem;
+    right: 1rem;
+    font-size: 2.5rem;
 `
 
 const renderProduct = (product) => {
@@ -64,8 +70,6 @@ export const getStaticProps = async () => {
         }
         return product;
     })
-
-    console.log(products)
 
     return {
         props: {
