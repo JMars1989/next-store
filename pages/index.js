@@ -16,13 +16,12 @@ const Container = styled.div`
         transform: scale(1.01);
     }
 `
-
 const ProductsContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0.5rem;
     margin: 0.5rem 0;
-`
+    `
 const Price = styled.div`
     position: absolute;
     bottom: 0.5rem;

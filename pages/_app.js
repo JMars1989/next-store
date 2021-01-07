@@ -9,6 +9,8 @@ const Container = styled.div`
     background: linear-gradient(to right, #1d4350, #a43931);
     font-family: 'Lato', sans-serif;
     ${'' /* color: #EEEFF0; */}
+
+    height: 100vh;
 `
 
 const Page = styled.div`
