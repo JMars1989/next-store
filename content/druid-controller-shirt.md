@@ -1,4 +1,5 @@
 ---
+id: 2
 name: Druid Controller Shirt
 description: Gilden Heavy shirt, design by David Paul Seymour.
 price: 2000
