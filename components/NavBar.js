@@ -24,11 +24,10 @@ const ShoppingCart = styled(FiShoppingCart)`
 `;
 
 const NavBar = () => {
-   // const { openCart } = useCart();
+    const { openCart } = useCart();
 
     const handleClick = () => {
-        //openCart();
-        console.log("ASDF")
+        openCart();
     };
 
     return (
