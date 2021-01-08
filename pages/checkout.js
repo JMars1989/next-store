@@ -1,6 +1,7 @@
 import Page from '../components/styled/Page'
 import useCart from '../hooks/useCart'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 const Item = styled.li`
   list-style: none;
@@ -39,9 +40,11 @@ const Button = styled.button`
 
 const Checkout = () => {
     const { cart, total } = useCart()
+    const router = useRouter()
 
     const processPayment = () => {
-        console.log("Payment!")
+
+        router.push("/success");       
     }
 
  return (

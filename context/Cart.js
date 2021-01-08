@@ -55,6 +55,11 @@ const Cart = ({ children }) => {
         setCart(newCart);
     };
 
+    const emptyCart = () => {
+        setCart([]);
+        localStorage.setItem('cart', null)
+    }
+
     const exposed = {
         cart,
         addItemToCart,
@@ -63,6 +68,7 @@ const Cart = ({ children }) => {
         closeCart,
         isOpen,
         total,
+        emptyCart
     };
 
     return (
