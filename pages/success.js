@@ -7,9 +7,7 @@ const Success = () => {
     const { emptyCart } = useCart()
 
     useEffect(() => {
-
         emptyCart()
-
     }, [])
 
     return (

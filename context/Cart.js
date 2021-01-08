@@ -57,7 +57,7 @@ const Cart = ({ children }) => {
 
     const emptyCart = () => {
         setCart([]);
-        localStorage.setItem('cart', null)
+        localStorage.removeItem('cart')
     }
 
     const exposed = {
