@@ -2,6 +2,8 @@ import Page from '../components/styled/Page'
 import useCart from '../hooks/useCart'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import Product from './products/[product]'
 
 const Item = styled.li`
   list-style: none;
@@ -42,7 +44,13 @@ const Checkout = () => {
     const { cart, total } = useCart()
     const router = useRouter()
 
-    const processPayment = () => {
+    const processPayment = async () => {
+        const url = "/.netlify/functions/charge-card";
+        const newCart = cart.map((id, qty) => ({
+            id,
+            qty,
+        }))
+        const { data } = await axios.post(url, { cart: newCart }); 
 
         router.push("/success");       
     }

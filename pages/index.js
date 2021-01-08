@@ -52,7 +52,7 @@ const renderProduct = (product, addItemToCart) => {
 
 const HomePage = (props) => {
   const { cart, addItemToCart } = useCart();
-  console.log(cart);
+  //console.log(cart);
   return (
     <ProductsContainer>
       {props.products.map((product) => renderProduct(product, addItemToCart))}
