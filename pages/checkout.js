@@ -39,7 +39,6 @@ const Button = styled.button`
   }
 `;
 
-
 const Checkout = () => {
     const { cart, total } = useCart()
     const router = useRouter()
@@ -50,8 +49,8 @@ const Checkout = () => {
             id,
             qty,
         }))
-        const { data } = await axios.post(url, { cart: newCart }); 
-
+        //const { data } = await axios.post(url, { cart: newCart }); 
+        //console.log(data)
         router.push("/success");       
     }
 
