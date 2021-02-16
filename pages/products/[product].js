@@ -17,12 +17,14 @@ const Price = styled.span`
     font-size: 2rem;
     padding: 0.25rem 1rem;
     border-radius: 5px;
-    background: #05d7df;
+    background: #000000;
     color: white;
     font-weight: 800;
     margin-bottom: 1rem;
     display: inline-block;
 `
+
+//need drop down selector for available sizes that shows only if the product has the option
 
 const Product = ({ product: { data, content } }) => {
     const html = marked(content)
@@ -33,6 +35,7 @@ const Product = ({ product: { data, content } }) => {
                 <SubTitle>{data.description}</SubTitle>
             </Title>
             <Price>${data.price / 100}</Price>
+            {data.sizes && <h3>What size? {data.sizes[0]}</h3>}
             <div dangerouslySetInnerHTML={{ __html: html }} />
         </Page>
     )

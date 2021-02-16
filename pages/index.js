@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import fs from "fs";
 import matter from "gray-matter";
 import styled from "styled-components";
@@ -41,6 +42,7 @@ const renderProduct = (product, addItemToCart) => {
       <UnstyledLink>
         <Container>
           <h1>{product.name}</h1>
+          <Image alt="Relic" src={`/images/${product.filenamed}`} width={1000} height={1000} />
           <p>{product.description}</p>
           <button onClick={handleClick}>Add to cart</button>
           <Price>${product.price / 100}</Price>
@@ -64,16 +66,18 @@ export const getStaticProps = async () => {
   const directory = `${process.cwd()}/content`;
   const filenames = fs.readdirSync(directory);
 
-  const products = filenames.map((filename) => {
+  const products = filenames.map(filename => {
     // read the file from fs
     const fileContent = fs.readFileSync(`${directory}/${filename}`).toString();
     // pull out frontmatter => name
     const { data } = matter(fileContent);
     // return name, slug
     const slug = `/products/${filename.replace(".md", "")}`;
+    const filenamed = filename.replace("md", "png")
     const product = {
       ...data,
       slug,
+      filenamed,
     };
     return product;
   });
