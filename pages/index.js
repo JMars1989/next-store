@@ -57,7 +57,7 @@ const HomePage = (props) => {
   //console.log(cart);
   return (
     <ProductsContainer>
-      {props.products.map((product) => renderProduct(product, addItemToCart))}
+      {props.products.map(product => renderProduct(product, addItemToCart))}
     </ProductsContainer>
   );
 };
