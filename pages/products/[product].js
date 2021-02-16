@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import marked from "marked";
 import styled from 'styled-components';
 import Page from '../../components/styled/Page';
+import Image from "next/image";
 
 const Title = styled.div`
     display: flex;
@@ -34,6 +35,7 @@ const Product = ({ product: { data, content } }) => {
                 <h1>{data.name}</h1>
                 <SubTitle>{data.description}</SubTitle>
             </Title>
+            <Image alt="Relic" src={`/images/${data.imageName}`} width={1000} height={1000} />
             <Price>${data.price / 100}</Price>
             {data.sizes && <h3>What size? {data.sizes[0]}</h3>}
             <div dangerouslySetInnerHTML={{ __html: html }} />

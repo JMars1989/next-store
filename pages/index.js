@@ -42,7 +42,7 @@ const renderProduct = (product, addItemToCart) => {
       <UnstyledLink>
         <Container>
           <h1>{product.name}</h1>
-          <Image alt="Relic" src={`/images/${product.filenamed}`} width={1000} height={1000} />
+          <Image alt="Relic" src={`/images/${product.imageName}`} width={1000} height={1000} />
           <p>{product.description}</p>
           <button onClick={handleClick}>Add to cart</button>
           <Price>${product.price / 100}</Price>
@@ -73,11 +73,9 @@ export const getStaticProps = async () => {
     const { data } = matter(fileContent);
     // return name, slug
     const slug = `/products/${filename.replace(".md", "")}`;
-    const filenamed = filename.replace("md", "png")
     const product = {
       ...data,
       slug,
-      filenamed,
     };
     return product;
   });
