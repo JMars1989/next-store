@@ -37,8 +37,19 @@ const Cart = ({ children }) => {
         setIsOpen(false);
     };
 
-    const addItemToCart = (product, qty = 1) => {
-        const item = cart.find((i) => i.id === product.id);
+    // const addItemToCart = (product, qty = 1) => {
+    //     const item = cart.find((i) => i.id === product.id);
+
+    //     if (item) {
+    //         item.qty += qty;
+    //         setCart([...cart]);
+    //     } else {
+    //         setCart([...cart, { ...product, qty }]);
+    //     }
+    // };
+
+    const addItemToCart = (product, qty = 1, size) => {
+        const item = cart.find((i) => (i.id === product.id) && i.size === product.size);
 
         if (item) {
             item.qty += qty;
