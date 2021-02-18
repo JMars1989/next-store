@@ -1,9 +1,9 @@
-import Page from '../components/styled/Page'
-import useCart from '../hooks/useCart'
-import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import axios from 'axios'
-import Product from './products/[product]'
+import Page from "../components/styled/Page";
+import useCart from "../hooks/useCart";
+import styled from "styled-components";
+import { useRouter } from "next/router";
+import axios from "axios";
+import Product from "./products/[product]";
 
 const Item = styled.li`
   list-style: none;
@@ -40,49 +40,48 @@ const Button = styled.button`
 `;
 
 const Checkout = () => {
-    const { cart, total } = useCart()
-    const router = useRouter()
+  const { cart, total } = useCart();
+  const router = useRouter();
 
-    const processPayment = async () => {
-        const url = "/.netlify/functions/charge-card";
-        const newCart = cart.map((id, qty) => ({
-            id,
-            qty,
-        }))
-        //const { data } = await axios.post(url, { cart: newCart }); 
-        //console.log(data)
-        router.push("/success");       
-    }
+  const processPayment = async () => {
+    const url = "/.netlify/functions/charge-card";
+    const newCart = cart.map((id, qty) => ({
+      id,
+      qty,
+    }));
+    //const { data } = await axios.post(url, { cart: newCart });
+    //console.log(data)
+    router.push("/success");
+  };
 
- return (
-     <Page>
-         <h2>Checkout!</h2>
-            {cart.length > 0 ? (
-            <>
-              <Ul>
-              {cart.map((item) => {
-            return (
-              <Item>
-                <span>
-                  {item.qty}x {item.name}
-                </span>
-                <span>${item.price / 100}</span>
-              </Item>
-            );
-          })}
+  return (
+    <Page>
+      <h2>Checkout!</h2>
+      {cart.length > 0 ? (
+        <>
+          <Ul>
+            {cart.map((item) => {
+              return (
+                <Item>
+                  <span>
+                    {item.qty}x {item.name} - {item.size && item.size}
+                  </span>
+                  <span>${item.price / 100}</span>
+                </Item>
+              );
+            })}
           </Ul>
-        <Total>
-          <span>Total</span>
-          <span>${total/100}</span>
-        </Total>
-        <Button onClick={processPayment}>Process Payment</Button>
+          <Total>
+            <span>Total</span>
+            <span>${total / 100}</span>
+          </Total>
+          <Button onClick={processPayment}>Process Payment</Button>
         </>
-        ) : (
-            <p>You don't appear to have anything in your cart!</p>
-        )}
-     </Page>
- )
-    
-}
+      ) : (
+        <p>You don't appear to have anything in your cart!</p>
+      )}
+    </Page>
+  );
+};
 
 export default Checkout;

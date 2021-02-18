@@ -32,58 +32,11 @@ const Price = styled.div`
   font-size: 2.5rem;
 `;
 
-const Input = styled.input`
-  margin: 7px;
-  opacity: 0;
-  position: fixed;
-  width: 0;
-
-
-`;
-
-const Label = styled.label`
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin: 1px;
-  font-size: 14px;
-  text-shadow: 1px 1px 1px #000000;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid;
-
-  &:hover,
-  &:active {
-    background-color: #999999;
-  }
-`;
-
-
-
-const renderProduct = (product, addItemToCart) => {
-  const [selectedSize, setSelectedSize] = useState("small");
-
-  //!product.sizes => size = -1 for physical media
-  //product.sizes => size = small by default
-  useEffect(() => {
-    if (!product.sizes) {
-      setSelectedSize(-1);
-    } else {
-      setSelectedSize("small");
-    }
-  }, []);
-
-  const handleClick = (e) => {
-    e.stopPropagation();
-    addItemToCart(product);
-  };
-
+const renderProduct = (product) => {
   return (
-    <Container>
-      <Link key={product.id} href={product.slug}>
-        <UnstyledLink>
+    <Link key={product.id} href={product.slug}>
+      <UnstyledLink>
+        <Container>
           <h1>{product.name}</h1>
           <Image
             alt="Relic"
@@ -92,25 +45,10 @@ const renderProduct = (product, addItemToCart) => {
             height={1000}
           />
           <p>{product.description}</p>
-          <button onClick={handleClick}>Add to cart</button>
           <Price>${product.price / 100}</Price>
-        </UnstyledLink>
-      </Link>
-      {product.sizes &&
-        product.sizes.map((s) => {
-          return (
-            <Label field={s}>
-              <Input
-                type="radio"
-                value={s}
-                name={"Size"}
-                onChange={({ target }) => setSelectedSize(target.value)}
-              />
-              {s}
-            </Label>
-          );
-        })}
-    </Container>
+        </Container>
+      </UnstyledLink>
+    </Link>
   );
 };
 

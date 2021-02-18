@@ -101,7 +101,7 @@ const Cart = () => {
                 return (
                   <Item>
                     <span>
-                      {item.qty}x {item.name}
+                      {item.qty}x {item.name} - {item.size && item.size}
                     </span>
                     <span>${item.price / 100}</span>
                   </Item>
