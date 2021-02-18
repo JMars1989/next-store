@@ -26,11 +26,13 @@ const ProductsContainer = styled.div`
 `;
 
 const Price = styled.div`
-  position: absolute;
+  
   bottom: 0.5rem;
   right: 1rem;
   font-size: 2.5rem;
+  display: block;
 `;
+//position: absolute;
 
 const renderProduct = (product) => {
   return (
