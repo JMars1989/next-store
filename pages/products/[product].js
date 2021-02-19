@@ -32,6 +32,7 @@ const Price = styled.span`
 const Input = styled.input`
   margin: 7px;
   opacity: 1;
+  background: ${(props) => (props.selected ? "palevioletred" : "ff0000")};
 `;
 //opacity and width = 0 to remove
 //  position: fixed;
@@ -46,7 +47,7 @@ const Label = styled.label`
   margin: 1px;
   font-size: 14px;
   text-shadow: 1px 1px 1px #000000;
-  
+
   border-radius: 4px;
   border: 1px solid;
 
@@ -54,16 +55,22 @@ const Label = styled.label`
   &:active {
     background-color: #999999;
   }
-  background: ${props => props.selected ? "palevioletred" : "white"}
+
+  ${({ selectedSize }) =>
+    selectedSize &&
+    `
+  background: 'ff0000';
+`}
 `;
+//background: ${props => props.selected ? "palevioletred" : "ff0000"};
 //backgroundColor: ${props => props.value === props.selectedSize ? "palevioletred" : "white"}
 //background-color: transparent;
 //display: flex;
 
 const AddToCartButton = styled.button`
-display: block;
-width: 80%;
-margin: 0.5rem;
+  display: block;
+  width: 80%;
+  margin: 0.5rem;
 `;
 
 const Wrapper = styled.div`
@@ -87,7 +94,7 @@ const Product = ({ product: { data, content } }) => {
       console.log("No sizes");
       setSelectedSize(-1);
     } else {
-      setSelectedSize("small");
+      setSelectedSize("S");
     }
   }, []);
 
@@ -118,18 +125,20 @@ const Product = ({ product: { data, content } }) => {
 
           <Block>
             {data.sizes &&
-              data.sizes.map((s) => {
+              data.sizes.map((s, i) => {
                 return (
-                  <Label field={s}>
+                  <Label field={s} selectedSize={s == selectedSize}>
                     <Input
                       type="radio"
                       value={s}
                       name={"Size"}
                       onChange={() => setSelectedSize(s)}
                       //onChange={() => console.log(s)}
-                      // style={{ backgroundColor: "black" }}
-                      // checked={true}
-                      selected={s == selectedSize}
+                      //style={{ background: "ff0000" }}
+                      //checked={s == selectedSize}
+
+                      //selected
+                      key={i}
                     />
                     {s}
                   </Label>
