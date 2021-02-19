@@ -67,9 +67,9 @@ color: ${(props) => (props.selected ? "#ffffff" : "#c2c2c2")};
 //display: flex;
 
 const AddToCartButton = styled.button`
-  display: block;
+  display: inline-block;
   width: 80%;
-  margin: 1rem;
+  margin: 1rem 0.3rem;
 `;
 
 const Wrapper = styled.div`

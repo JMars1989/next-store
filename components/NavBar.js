@@ -5,10 +5,11 @@ import { FiShoppingCart } from "react-icons/fi"
 import useCart from "../hooks/useCart";
 
 const Nav = styled.nav`
-    background: white;
+    background: #3d3d3d;
 `
 const NavContainer = styled.div`
-    background: white;
+    background: #3d3d3d;
+    color: #e0e0e0;
     width: 100%;
     max-width: 768px;
     margin: 0 auto;
@@ -17,7 +18,7 @@ const NavContainer = styled.div`
     justify-content: space-between;
 `
 const ShoppingCart = styled(FiShoppingCart)`
-  margin-right: 1rem;
+  margin: 0.2rem 1rem;
   &:hover {
     cursor: pointer;
   }
