@@ -6,6 +6,7 @@ import useCart from "../hooks/useCart";
 
 const Nav = styled.nav`
     background: #3d3d3d;
+    padding: 0.3rem 1rem;
 `
 const NavContainer = styled.div`
     background: #3d3d3d;
