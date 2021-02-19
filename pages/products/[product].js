@@ -13,55 +13,54 @@ const Block = styled.div`
 `;
 const SubTitle = styled.p`
   padding: 0.3rem 0.5rem;
-  color: #666;
-`;
+`
 
 const Price = styled.span`
   font-size: 2rem;
-  padding: 0.25rem 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 5px;
-  background: #000000;
-  color: white;
   font-weight: 800;
-  margin-bottom: 1rem;
 `;
-// display: flex;
-// flex-direction: "column";
-// align-self: flex-end;
+// background: #000000;
+// color: white;
+
 
 const Input = styled.input`
   margin: 7px;
-  opacity: 1;
-  background: ${(props) => (props.selected ? "palevioletred" : "ff0000")};
+  opacity: 0;
+  width: 0px;
+  position: fixed;  
 `;
 //opacity and width = 0 to remove
-//  position: fixed;
-// width: 0;
 
 const Label = styled.label`
-  width: 60px;
-
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  margin: 0.3rem;
   justify-content: center;
   align-content: center;
   align-items: center;
-  margin: 1px;
   font-size: 14px;
-  text-shadow: 1px 1px 1px #000000;
 
   border-radius: 4px;
   border: 1px solid;
 
   &:hover,
   &:active {
-    background-color: #999999;
+    background-color: #878787;
   }
 
-  ${({ selectedSize }) =>
-    selectedSize &&
-    `
-  background: 'ff0000';
-`}
+background: ${(props) => (props.selected ? "#888888" : "#3d3d3d")};
+color: ${(props) => (props.selected ? "#ffffff" : "#c2c2c2")};
 `;
+//  text-shadow: 1px 1px 1px #000000;
+//color: ${(props) => (props.selected ? "palevioletred" : "ff0000")};
+// ${({ selectedSize }) =>
+// selectedSize &&
+// `
+// background: 'ff0000';
+// `}
 //background: ${props => props.selected ? "palevioletred" : "ff0000"};
 //backgroundColor: ${props => props.value === props.selectedSize ? "palevioletred" : "white"}
 //background-color: transparent;
@@ -70,7 +69,7 @@ const Label = styled.label`
 const AddToCartButton = styled.button`
   display: block;
   width: 80%;
-  margin: 0.5rem;
+  margin: 1rem;
 `;
 
 const Wrapper = styled.div`
@@ -127,7 +126,7 @@ const Product = ({ product: { data, content } }) => {
             {data.sizes &&
               data.sizes.map((s, i) => {
                 return (
-                  <Label field={s} selectedSize={s == selectedSize}>
+                  <Label field={s} selected={s == selectedSize} >
                     <Input
                       type="radio"
                       value={s}
