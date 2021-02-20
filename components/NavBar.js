@@ -5,11 +5,11 @@ import { FiShoppingCart } from "react-icons/fi"
 import useCart from "../hooks/useCart";
 
 const Nav = styled.nav`
-    background: #3d3d3d;
-    padding: 0.3rem 1rem;
+    background: #131313;
+    padding: 0.3rem 0.3rem;
 `
 const NavContainer = styled.div`
-    background: #3d3d3d;
+    background: #131313;
     color: #e0e0e0;
     width: 100%;
     max-width: 768px;

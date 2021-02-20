@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import fs from "fs";
@@ -8,7 +7,7 @@ import UnstyledLink from "../components/styled/UnstyledLink";
 import useCart from "../hooks/useCart";
 
 const Container = styled.div`
-  background: white;
+
   padding: 1rem 2rem;
   min-height: 200px;
   position: relative;
@@ -17,6 +16,7 @@ const Container = styled.div`
     transform: scale(1.02);
   }
 `;
+//background: #8f8b88; //to match shirt mock up 
 
 const ProductsContainer = styled.div`
   display: grid;
@@ -26,10 +26,9 @@ const ProductsContainer = styled.div`
 `;
 
 const Price = styled.div`
-  
   bottom: 0.5rem;
   right: 1rem;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   display: block;
 `;
 //position: absolute;
@@ -39,15 +38,15 @@ const renderProduct = (product) => {
     <Link key={product.id} href={product.slug}>
       <UnstyledLink>
         <Container>
-          <h1>{product.name}</h1>
           <Image
             alt="Relic"
             src={`/images/${product.imageName}`}
             width={1000}
             height={1000}
           />
-          <p>{product.description}</p>
-          <Price>${product.price / 100}</Price>
+          <h1>{product.name}</h1>
+          {/* <p>{product.description}</p> */}
+          <Price>${product.price / 100}.00</Price>
         </Container>
       </UnstyledLink>
     </Link>
@@ -55,8 +54,7 @@ const renderProduct = (product) => {
 };
 
 const HomePage = (props) => {
-  const { cart, addItemToCart } = useCart();
-  //console.log(cart);
+  const { addItemToCart } = useCart();
   return (
     <ProductsContainer>
       {props.products.map((product) => renderProduct(product, addItemToCart))}

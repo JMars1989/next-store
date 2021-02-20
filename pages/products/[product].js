@@ -51,7 +51,7 @@ const Label = styled.label`
     background-color: #878787;
   }
 
-background: ${(props) => (props.selected ? "#888888" : "#3d3d3d")};
+background: ${(props) => (props.selected ? "#898989" : "#3d3d3d")};
 color: ${(props) => (props.selected ? "#ffffff" : "#c2c2c2")};
 `;
 //  text-shadow: 1px 1px 1px #000000;
@@ -132,11 +132,6 @@ const Product = ({ product: { data, content } }) => {
                       value={s}
                       name={"Size"}
                       onChange={() => setSelectedSize(s)}
-                      //onChange={() => console.log(s)}
-                      //style={{ background: "ff0000" }}
-                      //checked={s == selectedSize}
-
-                      //selected
                       key={i}
                     />
                     {s}

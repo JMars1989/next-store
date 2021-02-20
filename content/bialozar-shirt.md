@@ -1,6 +1,6 @@
 ---
 id: 1
-name: Bialozar Shirt
+name: Bialozar Tee
 description: Gilden SoftStyle shirt, design by Eli Quinn.
 price: 2000
 sizes: [S, M, L, XL, 2XL]

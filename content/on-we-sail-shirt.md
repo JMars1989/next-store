@@ -1,6 +1,6 @@
 ---
 id: 3
-name: On We Sail Shirt
+name: On We Sail Tee
 description: Gilden SoftStyle shirt, design by Yoyada.
 price: 2000
 sizes: [S, M, L, XL, 2XL]

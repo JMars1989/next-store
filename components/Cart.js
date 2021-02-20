@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { FiX } from "react-icons/fi";
 import useCart from "../hooks/useCart";
