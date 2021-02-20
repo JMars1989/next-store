@@ -13,10 +13,10 @@ const Block = styled.div`
 `;
 const SubTitle = styled.p`
   padding: 0.3rem 0.5rem;
-`
+`;
 
 const Price = styled.span`
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0.2rem 1rem;
   border-radius: 5px;
   font-weight: 800;
@@ -24,12 +24,11 @@ const Price = styled.span`
 // background: #000000;
 // color: white;
 
-
 const Input = styled.input`
   margin: 7px;
   opacity: 0;
   width: 0px;
-  position: fixed;  
+  position: fixed;
 `;
 //opacity and width = 0 to remove
 
@@ -50,21 +49,9 @@ const Label = styled.label`
   &:active {
     background-color: #878787;
   }
-
-background: ${(props) => (props.selected ? "#898989" : "#3d3d3d")};
-color: ${(props) => (props.selected ? "#ffffff" : "#c2c2c2")};
+  background: ${(props) => (props.selected ? "#898989" : "#3d3d3d")};
+  color: ${(props) => (props.selected ? "#ffffff" : "#c2c2c2")};
 `;
-//  text-shadow: 1px 1px 1px #000000;
-//color: ${(props) => (props.selected ? "palevioletred" : "ff0000")};
-// ${({ selectedSize }) =>
-// selectedSize &&
-// `
-// background: 'ff0000';
-// `}
-//background: ${props => props.selected ? "palevioletred" : "ff0000"};
-//backgroundColor: ${props => props.value === props.selectedSize ? "palevioletred" : "white"}
-//background-color: transparent;
-//display: flex;
 
 const AddToCartButton = styled.button`
   display: inline-block;
@@ -80,12 +67,12 @@ const Wrapper = styled.div`
 const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 0.5rem;
+  grid-gap: 1rem;
   margin: 0.5rem 0;
 `;
 
 const Product = ({ product: { data, content } }) => {
-  const { cart, addItemToCart } = useCart();
+  const { addItemToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState(-1);
 
   useEffect(() => {
@@ -126,7 +113,7 @@ const Product = ({ product: { data, content } }) => {
             {data.sizes &&
               data.sizes.map((s, i) => {
                 return (
-                  <Label field={s} selected={s == selectedSize} >
+                  <Label field={s} selected={s === selectedSize}>
                     <Input
                       type="radio"
                       value={s}

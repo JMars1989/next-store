@@ -7,23 +7,25 @@ import UnstyledLink from "../components/styled/UnstyledLink";
 import useCart from "../hooks/useCart";
 
 const Container = styled.div`
-
-  padding: 1rem 2rem;
-  min-height: 200px;
+  
+  min-height: 400px;
   position: relative;
   transition: transform 0.3s;
   &:hover {
     transform: scale(1.02);
   }
 `;
-//background: #8f8b88; //to match shirt mock up 
+//padding: 1rem 2rem;
+//background: #8f8b88; //to match shirt mock up
 
 const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 0.5rem;
-  margin: 0.5rem 0;
+  grid-gap: 1rem;
 `;
+//grid-template-columns: 1fr 1fr;
+//grid-template-columns: auto auto auto;
+//display: inline-grid;
 
 const Price = styled.div`
   bottom: 0.5rem;
@@ -33,7 +35,7 @@ const Price = styled.div`
 `;
 //position: absolute;
 
-const renderProduct = (product) => {
+const renderProduct = product => {
   return (
     <Link key={product.id} href={product.slug}>
       <UnstyledLink>
@@ -53,11 +55,11 @@ const renderProduct = (product) => {
   );
 };
 
-const HomePage = (props) => {
+const HomePage = props => {
   const { addItemToCart } = useCart();
   return (
     <ProductsContainer>
-      {props.products.map((product) => renderProduct(product, addItemToCart))}
+      {props.products.map(product => renderProduct(product, addItemToCart))}
     </ProductsContainer>
   );
 };
