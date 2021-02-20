@@ -5,10 +5,10 @@ const Page = styled.div`
     /* padding: 1rem 2rem;
     padding: 1rem 0rem; */
     color: #e0e0e0;
-
     width: 100%;
-    max-width: 950px;
-    margin: 0 auto;
+
 `
+//max-width: 950px;
+//    margin: 0 auto;
 
 export default Page;

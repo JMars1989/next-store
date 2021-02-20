@@ -7,35 +7,49 @@ import UnstyledLink from "../components/styled/UnstyledLink";
 import useCart from "../hooks/useCart";
 
 const Container = styled.div`
-  
   min-height: 400px;
   position: relative;
   transition: transform 0.3s;
   &:hover {
     transform: scale(1.02);
   }
+  margin: 0 .3rem 0 .3rem;
 `;
 //padding: 1rem 2rem;
 //background: #8f8b88; //to match shirt mock up
 
+// const ProductsContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 0.5rem;
+//   margin: 0 auto;
+// `;
+
 const ProductsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  
 `;
-//grid-template-columns: 1fr 1fr;
-//grid-template-columns: auto auto auto;
-//display: inline-grid;
+
+const Title = styled.h1`
+  margin: 0 0;
+  padding: 0.25rem 0 0.25rem 0;
+`;
 
 const Price = styled.div`
-  bottom: 0.5rem;
-  right: 1rem;
   font-size: 1.5rem;
-  display: block;
+  padding: 0 0 1.2rem 0;
 `;
-//position: absolute;
 
-const renderProduct = product => {
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const renderProduct = (product) => {
   return (
     <Link key={product.id} href={product.slug}>
       <UnstyledLink>
@@ -43,12 +57,14 @@ const renderProduct = product => {
           <Image
             alt="Relic"
             src={`/images/${product.imageName}`}
-            width={1000}
-            height={1000}
+            width={400}
+            height={400}
+            layout="intrinsic"
           />
-          <h1>{product.name}</h1>
-          {/* <p>{product.description}</p> */}
-          <Price>${product.price / 100}.00</Price>
+          <Center>
+            <Title>{product.name}</Title>
+            <Price>${product.price / 100}.00</Price>
+          </Center>
         </Container>
       </UnstyledLink>
     </Link>
@@ -59,7 +75,7 @@ const HomePage = props => {
   const { addItemToCart } = useCart();
   return (
     <ProductsContainer>
-      {props.products.map(product => renderProduct(product, addItemToCart))}
+      {props.products.map((product) => renderProduct(product, addItemToCart))}
     </ProductsContainer>
   );
 };
