@@ -7,36 +7,61 @@ import Page from "../../components/styled/Page";
 import Image from "next/image";
 import useCart from "../../hooks/useCart";
 
-const Block = styled.div`
-  display: block;
-  align-items: flex-end;
+const ProductsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
-const SubTitle = styled.p`
-  padding: 0 0 0.5rem 0;
-  margin: 1rem 0 1.5rem 0;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc(100% / 2);
+`;
+
+const Block = styled.div`
+  display: flex;
+  //justify-content: flex-start;
+  //align-items: center;
+  //flex-direction: column;
+`;
+// display: block;
+//   align-items: flex-end;
+// flex-wrap: wrap;
+// flex-direction: row;
+//display: flex;
+
+const Title = styled.h1`
+  font-size: 2.6rem;
+  margin: 2rem 0 0.6rem 0;
+  padding: 0.25rem 0 0 0;
 `;
 
 const Price = styled.span`
+  /* display: inline-block; */
   font-size: 1.5rem;
   border-radius: 5px;
   font-weight: 800;
+  margin-bottom: 1rem;
 `;
 // background: #000000;
 // color: white;
 
-const Input = styled.input`
-  opacity: 0;
-  width: 7px;
-  position: fixed;
+const SubTitle = styled.p`
+  padding: 0 0 0.5rem 0;
+  margin: 1rem 0 0.5rem 0;
 `;
-//opacity and width = 0 to remove
 
 const Label = styled.label`
-  display: inline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //flex-direction: row;
+
   width: 10px;
   height: 10px;
   padding: 10px 20px;
-  margin: 0 0.5rem 0 0;
+  margin: 0.2rem 0.2rem;
   font-size: 14px;
   border-radius: 4px;
   border: 1px solid;
@@ -48,8 +73,13 @@ const Label = styled.label`
   background: ${(props) => (props.selected ? "#898989" : "#3d3d3d")};
   color: ${(props) => (props.selected ? "#ffffff" : "#c2c2c2")};
 `;
-// width: 100px;
-// height: 100px;
+
+const Input = styled.input`
+  opacity: 0;
+  width: 0px;
+  position: fixed;
+`;
+//opacity and width = 0 to remove
 
 const AddToCartButton = styled.button`
   display: inline-block;
@@ -59,30 +89,12 @@ const AddToCartButton = styled.button`
   font-size: 1.2rem;
 `;
 
-const Title = styled.h1`
-  font-size: 2.6rem;
-  margin: 2rem 0 0.6rem 0;
-  padding: 0.25rem 0 0 0;
-`;
-
-const Wrapper = styled.div``;
-// margin: 0 0;
-// padding: 0 0;
-//display: inline-block;
-
-const ProductsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1.5rem;
-`;
-
 const Product = ({ product: { data, content } }) => {
   const { addItemToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState(-1);
 
   useEffect(() => {
     if (!data.sizes) {
-      console.log("No sizes");
       setSelectedSize(-1);
     } else {
       setSelectedSize("S");
@@ -102,17 +114,18 @@ const Product = ({ product: { data, content } }) => {
           <Image
             alt="Relic"
             src={`/images/${data.imageName}`}
-            width={1000}
-            height={1000}
+            width={798}
+            height={798}
             layout="intrinsic"
           />
         </Wrapper>
+
         <Wrapper>
-          <Block>
+          {/* <Block> */}
             <Title>{data.name}</Title>
-            <Price>${data.price / 100}.00</Price>
-            <SubTitle>{data.description}</SubTitle>
-          </Block>
+          {/* </Block> */}
+
+          <Price>${data.price / 100}.00</Price>
 
           <Block>
             {data.sizes &&
@@ -131,9 +144,8 @@ const Product = ({ product: { data, content } }) => {
                 );
               })}
           </Block>
-
           <AddToCartButton onClick={handleClick}>Add to cart</AddToCartButton>
-
+          <SubTitle>{data.description}</SubTitle>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </Wrapper>
       </ProductsContainer>

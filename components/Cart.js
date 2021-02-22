@@ -12,8 +12,9 @@ const Container = styled.div`
   background: white;
   width: 300px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transform: translateX(${(props) => (props.isOpen ? "0" : "100%")});
+  transform: translateX(${props => (props.isOpen ? "0" : "100%")});
   transition: transform 0.2s ease-in;
+  color: black;
 `;
 
 const X = styled(FiX)`
@@ -34,7 +35,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 400;
   border-bottom: 1px solid #efefef;
 `;
@@ -59,16 +60,23 @@ const Total = styled.p`
 `;
 
 const Button = styled.button`
-  background: linear-gradient(to right, #fc00ff, #00dbde);
   font-size: 2rem;
-  color: inherit;
   outline: none;
   border: none;
   width: 100%;
   padding: 1rem;
+  background: #898989;
   color: white;
 
-  &:hover {
+  display: inline-block;
+  width: 98%;
+  height: 3rem;
+  margin: 2rem auto 0.3rem auto;
+  font-size: 1.2rem;
+
+  &:hover,
+  &:active {
+    background-color: #3d3d3d;
     cursor: pointer;
   }
 `;
@@ -92,26 +100,26 @@ const Cart = () => {
         <X onClick={handleClick} />
       </XContainer>
       <Content>
-        <Title>Cart</Title>
+        <Title>Your Cart</Title>
         {cart.length > 0 ? (
           <>
             <Ul>
-              {cart.map((item) => {
+              {cart.map(item => {
                 return (
                   <Item>
                     <span>
                       {item.qty}x {item.name} - {item.size && item.size}
                     </span>
-                    <span>${item.price / 100}</span>
+                    <span>${item.price / 100}.00</span>
                   </Item>
                 );
               })}
             </Ul>
             <Total>
-          <span>Total</span>
-          <span>{total / 100}</span>
+          <span>Total (USD)</span>
+          <span>${total / 100}.00</span>
         </Total>
-        <Button onClick={navigateToCheckout}>Checkout</Button>
+        <Button onClick={navigateToCheckout}>Check Out</Button>
           </>
         ) : (
             <p>Cart is empty!</p>

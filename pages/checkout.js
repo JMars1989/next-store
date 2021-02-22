@@ -7,6 +7,7 @@ import Product from "./products/[product]";
 
 const Item = styled.li`
   list-style: none;
+  flex-direction: row;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #efefef;
@@ -25,18 +26,38 @@ const Total = styled.p`
 `;
 
 const Button = styled.button`
-  background: linear-gradient(to right, #fc00ff, #00dbde);
-  font-size: 2rem;
-  color: inherit;
+  font-size: 1.6rem;
   outline: none;
   border: none;
   width: 100%;
   padding: 1rem;
-  color: white;
 
-  &:hover {
+  &:hover,
+  &:active {
+    background-color: #c2c2c2;
     cursor: pointer;
   }
+`;
+
+const Block = styled.div`
+margin: 0 2rem;
+  /* flex-direction: column;
+  display: flex;
+
+  align-items: center; */
+
+  //flex-direction: row;
+`;
+// display: block;
+//   align-items: flex-end;
+// flex-wrap: wrap;
+// flex-direction: row;
+//display: flex;
+
+const Title = styled.h1`
+  font-size: 2.6rem;
+  margin: 2rem 0 0.6rem 0;
+  padding: 0.25rem 0 0 0;
 `;
 
 const Checkout = () => {
@@ -56,30 +77,32 @@ const Checkout = () => {
 
   return (
     <Page>
-      <h2>Checkout!</h2>
-      {cart.length > 0 ? (
-        <>
-          <Ul>
-            {cart.map((item) => {
-              return (
-                <Item>
-                  <span>
-                    {item.qty}x {item.name} - {item.size && item.size}
-                  </span>
-                  <span>${item.price / 100}</span>
-                </Item>
-              );
-            })}
-          </Ul>
-          <Total>
-            <span>Total</span>
-            <span>${total / 100}</span>
-          </Total>
-          <Button onClick={processPayment}>Process Payment</Button>
-        </>
-      ) : (
-        <p>You don't appear to have anything in your cart!</p>
-      )}
+      <Block>
+        <Title>Check Out</Title>
+        {cart.length > 0 ? (
+          <>
+            <Ul>
+              {cart.map((item) => {
+                return (
+                  <Item>
+                    <span>
+                      {item.qty}x {item.name} - {item.size && item.size}  
+                    </span>
+                    <span>${ item.price / 100}</span>
+                  </Item>
+                );
+              })}
+            </Ul>
+            <Total>
+              <span>Total</span>
+              <span>${total / 100}</span>
+            </Total>
+            <Button onClick={processPayment}>Process Payment</Button>
+          </>
+        ) : (
+          <p>You don't appear to have anything in your cart!</p>
+        )}
+      </Block>
     </Page>
   );
 };

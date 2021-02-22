@@ -6,6 +6,13 @@ import styled from "styled-components";
 import UnstyledLink from "../components/styled/UnstyledLink";
 import useCart from "../hooks/useCart";
 
+const ProductsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 const Container = styled.div`
   min-height: 400px;
   position: relative;
@@ -24,14 +31,6 @@ const Container = styled.div`
 //   grid-gap: 0.5rem;
 //   margin: 0 auto;
 // `;
-
-const ProductsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  
-`;
 
 const Title = styled.h1`
   margin: 0 0;
