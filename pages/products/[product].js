@@ -16,52 +16,39 @@ const ProductsContainer = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex-basis: calc(100% / 2);
+  flex-basis: calc(90% / 2);
+  margin: 0.8rem 0.8rem;
 `;
 
 const Block = styled.div`
   display: flex;
-  //justify-content: flex-start;
-  //align-items: center;
-  //flex-direction: column;
 `;
-// display: block;
-//   align-items: flex-end;
-// flex-wrap: wrap;
-// flex-direction: row;
-//display: flex;
 
 const Title = styled.h1`
   font-size: 2.6rem;
-  margin: 2rem 0 0.6rem 0;
-  padding: 0.25rem 0 0 0;
 `;
 
 const Price = styled.span`
-  /* display: inline-block; */
   font-size: 1.5rem;
   border-radius: 5px;
   font-weight: 800;
   margin-bottom: 1rem;
 `;
-// background: #000000;
-// color: white;
 
 const SubTitle = styled.p`
-  padding: 0 0 0.5rem 0;
-  margin: 1rem 0 0.5rem 0;
+  /* padding: 0 0 0.5rem 0;  
+  margin: 1rem 0 0.5rem 0; */
 `;
 
 const Label = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  //flex-direction: row;
 
   width: 10px;
   height: 10px;
   padding: 10px 20px;
-  margin: 0.2rem 0.2rem;
+  margin: 0.2rem 0.4rem 0.8rem 0rem;
   font-size: 14px;
   border-radius: 4px;
   border: 1px solid;
@@ -82,11 +69,13 @@ const Input = styled.input`
 //opacity and width = 0 to remove
 
 const AddToCartButton = styled.button`
-  display: inline-block;
-  width: 98%;
   height: 3rem;
-  margin: 2rem auto 0.3rem auto;
   font-size: 1.2rem;
+
+  &:hover,
+  &:active {
+    background-color: #878787;
+  }
 `;
 
 const Product = ({ product: { data, content } }) => {
@@ -110,7 +99,6 @@ const Product = ({ product: { data, content } }) => {
   return (
     <Page>
       <ProductsContainer>
-        <Wrapper>
           <Image
             alt="Relic"
             src={`/images/${data.imageName}`}
@@ -118,15 +106,10 @@ const Product = ({ product: { data, content } }) => {
             height={798}
             layout="intrinsic"
           />
-        </Wrapper>
 
         <Wrapper>
-          {/* <Block> */}
-            <Title>{data.name}</Title>
-          {/* </Block> */}
-
+          <Title>{data.name}</Title>
           <Price>${data.price / 100}.00</Price>
-
           <Block>
             {data.sizes &&
               data.sizes.map((s, i) => {
@@ -145,8 +128,11 @@ const Product = ({ product: { data, content } }) => {
               })}
           </Block>
           <AddToCartButton onClick={handleClick}>Add to cart</AddToCartButton>
-          <SubTitle>{data.description}</SubTitle>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+
+          <div>
+            <SubTitle>{data.description}</SubTitle>
+            <SubTitle dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
         </Wrapper>
       </ProductsContainer>
     </Page>
