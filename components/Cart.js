@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FiX } from "react-icons/fi";
 import useCart from "../hooks/useCart";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   position: fixed;
@@ -12,14 +12,14 @@ const Container = styled.div`
   background: white;
   width: 300px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transform: translateX(${props => (props.isOpen ? "0" : "100%")});
+  transform: translateX(${(props) => (props.isOpen ? "0" : "100%")});
   transition: transform 0.2s ease-in;
   color: black;
 `;
 
 const X = styled(FiX)`
   font-size: 3rem;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -83,7 +83,7 @@ const Button = styled.button`
 
 const Cart = () => {
   const { cart, isOpen, openCart, closeCart, total } = useCart();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleClick = () => {
     closeCart();
@@ -92,7 +92,7 @@ const Cart = () => {
   const navigateToCheckout = () => {
     closeCart();
     router.push("/checkout");
-  }
+  };
 
   return (
     <Container isOpen={isOpen}>
@@ -104,7 +104,7 @@ const Cart = () => {
         {cart.length > 0 ? (
           <>
             <Ul>
-              {cart.map(item => {
+              {cart.map((item) => {
                 return (
                   <Item>
                     <span>
@@ -116,15 +116,14 @@ const Cart = () => {
               })}
             </Ul>
             <Total>
-          <span>Total (USD)</span>
-          <span>${total / 100}.00</span>
-        </Total>
-        <Button onClick={navigateToCheckout}>Check Out</Button>
+              <span>Total (USD)</span>
+              <span>${total / 100}.00</span>
+            </Total>
+            <Button onClick={navigateToCheckout}>Check Out</Button>
           </>
         ) : (
-            <p>Cart is empty!</p>
-          )}
-
+          <p>Cart is empty!</p>
+        )}
       </Content>
     </Container>
   );

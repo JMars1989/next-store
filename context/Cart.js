@@ -36,27 +36,25 @@ const Cart = ({ children }) => {
     setIsOpen(false);
   };
 
-  // const addItemToCart = (product, qty = 1) => {
-  //     const item = cart.find((i) => i.id === product.id);
-
-  //     if (item) {
-  //         item.qty += qty;
-  //         setCart([...cart]);
-  //     } else {
-  //         setCart([...cart, { ...product, qty }]);
-  //     }
-  // };
-
   const addItemToCart = (product, qty = 1, size) => {
-    const item = cart.find(
-      (i) => i.id === product.id && i.size === product.size
-    );
+    const item = { ...product, qty, size: size };
+    let incrementQty = false;
 
-    console.log(size);
+    const updatedCart = cart.map((i) => {
+      if (i.id === item.id && i.size === item.size) {
+        incrementQty = true;
 
-    if (item) {
-      item.qty += qty;
-      setCart([...cart]);
+        return {
+          ...i,
+          qty: (i.qty += 1),
+        };
+      } else {
+        return i;
+      }
+    });
+
+    if (incrementQty) {
+      setCart(updatedCart);
     } else {
       setCart([...cart, { ...product, qty, size }]);
     }

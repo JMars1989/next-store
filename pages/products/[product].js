@@ -93,19 +93,20 @@ const Product = ({ product: { data, content } }) => {
   const handleClick = (e) => {
     e.stopPropagation();
     addItemToCart(data, 1, selectedSize);
+    //console.log(selectedSize)
   };
 
   const html = marked(content);
   return (
     <Page>
       <ProductsContainer>
-          <Image
-            alt="Relic"
-            src={`/images/${data.imageName}`}
-            width={798}
-            height={798}
-            layout="intrinsic"
-          />
+        <Image
+          alt="Relic"
+          src={`/images/${data.imageName}`}
+          width={798}
+          height={798}
+          layout="intrinsic"
+        />
 
         <Wrapper>
           <Title>{data.name}</Title>
