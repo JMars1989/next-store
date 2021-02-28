@@ -18,6 +18,8 @@ const Ul = styled.ul`
   padding: 0;
 `;
 
+const Text = styled.span``;
+
 const Total = styled.p`
   display: flex;
   justify-content: space-between;
@@ -29,7 +31,7 @@ const Button = styled.button`
   font-size: 1.6rem;
   outline: none;
   border: none;
-  width: 100%;
+  width: 50%;
   padding: 1rem;
 
   &:hover,
@@ -40,11 +42,11 @@ const Button = styled.button`
 `;
 
 const Block = styled.div`
-margin: 0 2rem;
-  /* flex-direction: column;
+  margin: 0 2rem;
+  flex-direction: column;
   display: flex;
 
-  align-items: center; */
+  align-items: center;
 
   //flex-direction: row;
 `;
@@ -85,17 +87,16 @@ const Checkout = () => {
               {cart.map((item) => {
                 return (
                   <Item>
-                    <span>
-                      {item.qty}x {item.name} - {item.size && item.size}  
-                    </span>
-                    <span>${ item.price / 100}</span>
+                    <Text>
+                      {item.qty}x {item.name} - {item.size} ${item.price / 100}
+                      .00
+                    </Text>
                   </Item>
                 );
               })}
             </Ul>
             <Total>
-              <span>Total</span>
-              <span>${total / 100}</span>
+              <Text>Total ${total / 100}.00</Text>
             </Total>
             <Button onClick={processPayment}>Process Payment</Button>
           </>
