@@ -20,7 +20,7 @@ const Error = () => {
     const { emptyCart } = useCart()
 
     useEffect(() => {
-        //emptyCart()
+        emptyCart()
     }, [])
 
     return (
