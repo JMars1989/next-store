@@ -13,7 +13,6 @@ const Item = styled.li`
   border-bottom: 1px solid #efefef;
   margin-bottom: 1rem;
   font-size: 1.2rem;
-  //::afterpadding: 0.8rem;
 `;
 
 const Ul = styled.ul`
@@ -49,20 +48,11 @@ const Button = styled.button`
 `;
 
 const Block = styled.div`
-  //margin: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
   align-items: center;
-
-  //flex-direction: row;
 `;
-// display: block;
-//   align-items: flex-end;
-// flex-wrap: wrap;
-// flex-direction: row;
-//display: flex;
 
 const Title = styled.h1`
   font-size: 2.6rem;
@@ -82,7 +72,10 @@ const Checkout = () => {
     }));
     //const { data } = await axios.post(url, { cart: newCart });
     //console.log(data)
-    router.push("/success");
+    //if success
+    //router.push("/success");
+    //else if error >
+    router.push("/error");
   };
 
   return (
