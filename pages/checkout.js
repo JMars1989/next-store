@@ -12,13 +12,20 @@ const Item = styled.li`
   justify-content: space-between;
   border-bottom: 1px solid #efefef;
   margin-bottom: 1rem;
+  font-size: 1.2rem;
+  //::afterpadding: 0.8rem;
 `;
 
 const Ul = styled.ul`
-  padding: 0;
+  flex-direction: column;
+  display: flex;
 `;
 
-const Text = styled.span``;
+const Text = styled.span`
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0.4rem;
+`;
 
 const Total = styled.p`
   display: flex;
@@ -42,9 +49,10 @@ const Button = styled.button`
 `;
 
 const Block = styled.div`
-  margin: 0 2rem;
-  flex-direction: column;
+  //margin: 0 2rem;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   align-items: center;
 
@@ -88,7 +96,11 @@ const Checkout = () => {
                 return (
                   <Item>
                     <Text>
-                      {item.qty}x {item.name} - {item.size} ${item.price / 100}
+                      {item.qty}x {item.name}
+                    </Text>
+                    <Text>{item.size}</Text>
+                    <Text>
+                      ${item.price / 100}
                       .00
                     </Text>
                   </Item>
