@@ -19,21 +19,23 @@ const getProducts = () => {
 
 exports.handler = async (event, context) => {
 
-    process.env.STRIPE_PUBLIC_KEY
+    console.log(event)
 
-    const { cart } = JSON.parse(event.body);
+    //process.env.STRIPE_PUBLIC_KEY
 
-    const products = getProducts();
+    //const { cart } = JSON.parse(event.body);
 
-    const cartWithProducts = cart.map(({ id, qty }) => {
-        const product = products.find(p => p.id === id)
-        return {
-            ...product,
-            qty,
-        };
-    });
+    //const products = getProducts();
 
-    console.log(cartWithProducts);
+    // const cartWithProducts = cart.map(({ id, qty }) => {
+    //     const product = products.find(p => p.id === id)
+    //     return {
+    //         ...product,
+    //         qty,
+    //     };
+    // });
+
+    //console.log(cartWithProducts);
     //talk to strip
     //charge care
 

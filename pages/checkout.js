@@ -70,12 +70,12 @@ const Checkout = () => {
       id,
       qty,
     }));
-    //const { data } = await axios.post(url, { cart: newCart });
-    //console.log(data)
+    const { data } = await axios.post(url, { cart: newCart });
+    console.log(data)
     //if success
-    //router.push("/success");
+    router.push("/success");
     //else if error >
-    router.push("/error");
+    //router.push("/error");
   };
 
   return (
